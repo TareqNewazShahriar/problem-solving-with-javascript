@@ -1,0 +1,14 @@
+﻿
+.bn .bn { display:block; }
+.bn .en { display:none; }
+.en .bn { display:none; }
+.en .en { display:block; }
+
+td { min-width: 25px; }
+ul { text-shadow:1px 1px 2px black; }
+li { margin:5px; }
+span { color:White; }
+p { width:550px;  }
+input[type=button] { min-width: 100px; }
+.hide { DISPLAY: none; }
+.tbl { border: 1px solid black; TEXT-SHADOW:1px 1px 2px gray; COLOR:White; text-align:center; }

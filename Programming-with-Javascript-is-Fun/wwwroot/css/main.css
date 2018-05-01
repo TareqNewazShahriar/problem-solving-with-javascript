@@ -1,0 +1,172 @@
+﻿body
+{
+	font-size: 11pt;
+	font-family: Arial, Helvetica, sans-serif;
+}
+a { color: #005E9B; }
+a:hover { text-decoration:underline; }
+a:visited { color: #336699; }
+
+.mains
+{
+	margin:20px auto;
+	WIDTH: 80%;
+}
+
+.nav-path
+{
+    margin: 0px 7px;
+    border-radius:2px;
+    box-shadow: 1px 0px 7px silver;
+    padding: 3px;
+    border-bottom:2px gainsboro solid;
+}
+
+.innerWidth
+{	
+	width: 98%;
+}
+
+.footAdjust
+{
+	height:20px;
+	width:800px;
+	float:left;
+}
+
+.main
+{
+	/*background-color:White;*/
+	height:auto;
+	width:100%;
+	float:left;
+	border:solid 1px silver;
+}
+
+.contentShadow
+{
+	border-radius:5px;
+	box-shadow:2px 2px 6px silver;
+}
+
+.mid
+{
+	margin:0 auto;
+}
+
+.header
+{
+	border-bottom: 3px solid whitesmoke;
+    height: 80px;
+    text-align:center;
+    font-size:14pt;
+    font-weight:bold;
+    padding-top: 15px;
+    margin:7px;
+}
+
+.footer
+{
+	min-height:80px;
+	border-top:3px solid whitesmoke;
+	font-size:8pt;
+	padding-top:15px;
+	margin: 100px 7px 7px 7px;
+}
+
+.contents
+{
+	min-height:700px;
+	margin:7px;
+}
+
+.title
+{
+	font-variant:small-caps; 
+	text-transform:capitalize;
+	text-shadow:0px 0px 8px gray;
+}
+
+.multiText
+{
+	min-height:250px;
+	max-height:250px;
+	width:500px;
+	min-width:500px;
+	max-width:500px;
+	font-family:SolaimanLipi,Verdana, Arial;
+	font-size: 12pt;
+}
+
+.commonWidth
+{
+	width:500px;
+}
+
+.holder
+{
+	height:260px;
+	position:relative;
+	overflow:hidden;
+}
+
+.multiText:hover
+{
+	box-shadow:0px 0px 2px gray;
+}
+
+.outputContent
+{
+	overflow:auto;
+}
+
+.buttons
+{
+	width:200px;
+	height:30px;
+}
+
+.customButton
+{
+	cursor: pointer;
+	border: 1px solid #CCCCCC;
+	color: #006699;
+	font-size: 10pt;
+}
+.customButton:hover
+{
+	/*border-bottom:solid 2px black;
+	border-right:solid 2px black;*/
+	box-shadow: 0px 0px 3px gray;
+	color: #406060;
+}
+
+.favLocation
+{
+	position:absolute;
+	left:10px;
+	top:10px;
+}
+.flashContainer
+{
+	background-color:White;
+	height:0px;
+	width:0px;
+	box-shadow:5px 5px 20px white;
+	position:absolute;
+	z-index:10;
+	opacity:0.7;
+	display: block;
+	animation: flashFrames 1.5s;
+	left:-1px;
+	top:-1px;
+}
+
+@keyframes flashFrames
+{
+	0% { opacity:0.7; width: 500px; height:250px; left:-1px;}
+	20% { opacity:0.7; width: 500px; height:250px; left:-1px;}
+	100% { opacity:0.7; width:500px; height:0px; top:250px;   }
+}
+
+.item-list { line-height:25px; }

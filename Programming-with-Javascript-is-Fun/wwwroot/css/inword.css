@@ -1,0 +1,25 @@
+﻿
+body, input { font-family: SolaimanLipi, Vrinda; font-size:13pt; }
+
+.bn .bn { display:block; }
+.bn .en { display:none; }
+.en .bn { display:none; }
+.en .en { display:block; }
+
+.hide { DISPLAY: none; }
+
+pre { border: 1px solid whitesmoke; }
+
+.codeDiv { margin-top:20px;
+			font-family: Consolas, Courier New, Courier;
+           font-size:10pt; }
+
+#jsBn { display:none; }
+#jsEn { display:none; }
+#csBn { display:none; }
+#csEn { display:none; }
+
+fieldset { min-height:150px; display:none; }
+.border { border-bottom:1px solid silver; margin-top:20px;}
+
+#code { color: #005B88; cursor:pointer; }
