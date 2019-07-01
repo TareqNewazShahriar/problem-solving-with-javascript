@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Number In-word</title>
+
+	<link href="number-inword.css" rel="stylesheet" type="text/css" />
+	<!--start: Syntex Highlighter Styles and scripts-->
+	<link href="../lib/syntex_highlighter_3.0/css/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="../lib/syntex_highlighter_3.0/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+	<script src="../lib/syntex_highlighter_3.0/script/shCore.js" type="text/javascript">
+	</script>
+	<script src="../lib/syntex_highlighter_3.0/script/shBrushCpp.js" type="text/javascript"></script>
+	<script src="../lib/syntex_highlighter_3.0/script/shBrushJScript.js" type="text/javascript"></script>
+	<script src="../lib/syntex_highlighter_3.0/script/shBrushCSharp.js" type="text/javascript"></script>
+	<!--end: syntex highlighter-->
+	<script src="../app/js/main.js" type="text/javascript"></script>
+	<script src="number-inword.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all()
+	</script>
+</head>
+<body>
+	<a href="../index.html">JS Programming</a> / Number In-word
+	<hr>
+	
+	<h3>Number In-word</h3>
+	<p>
+		<label>
+			Type any real number to see the number in-word (give it a try and try to find any bug)
+		</label><br />
+		<input id="num" type="text" style="max-width:500px;" />
+	</p>
+	<p>
+		<label>Bangla Number System</label><br />
+		<textarea id="wordBn" rows="4" readonly="readonly" style="width:100%;"></textarea>
+	</p>
+	<p>
+		<label>US Number System</label><br />
+		<textarea id="wordEn" rows="4" readonly="readonly" style="width:100%"></textarea>
+	</p>
+	<br /><br /><br /><br />
+	<span id="code">Get The Code (JS|C#)</span>
+	<fieldset>
+		<legend>Get The Code</legend>
+		<select id="ddlCode">
+			<option selected="selected">--select a code--</option>
+			<option>Javascript Code - Bangla Number System</option>
+			<option>Javascript Code - US Number System</option>
+			<option>C# Code - Bangla Number System</option>
+			<option>C# Code - US Number System</option>
+		</select>
+		<div class="border"></div>
+		<div class="codeDiv">
+			<pre id="jsBn" class="brush: jscript">
+					function NumberInWord_Bn(number)
+					{
+						/***code_of_tns***/
+						
+						number = trim(number);
+						if (isNaN(parseFloat(number)) == true)
+							return "";
+						else if (parseFloat(number) == 0)
+							return "Zero";
+
+						number = number.toString().replace( ',', '' );
+						
+						if (number == null || number == '' || parseFloat(number) == null)
+							return '';
+						
+						var num = number.split('.');
+						number = trim(num[0]).replace(/^0+/g, ''); ;
+
+						var word1 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
+										"Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
+										"Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+						var word2 = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+						var word3 = ["", "", "Thousand", "Lac", "Crore"];
+						
+						var i3, len, n1, n2,
+							CompleteWord, tmp;
+
+						CompleteWord = "";
+
+						var d = number
+						i3 = 0;
+						len = d.length - 1;
+
+						for (; len >= 0; len--, i3 = (i3 % 4) + 1)	// for i3, cycle, 1 through 4
+						{
+							n1 = d.charCodeAt(len) - 48; // converting char to int. eg. '2' -> 2
+
+							if (i3 != 1)		// if not the term of hundred
+							{
+								if (len > 0)	// making tow-digit word
+								{
+									len--;
+									n2 = d.charCodeAt(len) - 48;
+									if (n2 * 10 + n1 < 20)	// if 10 to 19, then copy predifined digitWord num1[10..19]
+										tmp = word1[n2 * 10 + n1];
+									else				// making two digits inWord  >19
+										tmp = word2[n2] + (word1[n1] == "" ? "" : " " + word1[n1]);
+
+								}
+								else tmp = word1[n1];
+
+								// creating Quantity-in-Word---
+								if (i3 == 4)		// always place crore, though zero
+									CompleteWord = (tmp==""? "" : tmp+" ") + word3[4] + " " + CompleteWord;
+								else if (tmp != "")
+								{
+									var t = word3[i3] == "" ? "" : " " + word3[i3];
+									var s = CompleteWord == "" ? "" : " " + CompleteWord;
+									CompleteWord = tmp + t + s;
+								}
+							}
+							else if (n1 != 0)		// it is now the term to be hundred
+								CompleteWord = word1[n1] + " Hundred " + CompleteWord;
+
+						} // for loop
+
+						CompleteWord = trim(CompleteWord);
+
+						if (num.length > 1 && isNaN(parseInt(num[1])) == false && parseInt(num[1]) != 0)
+						{
+							var points = num[1].replace(/0+$/g, ''); ;
+							CompleteWord += " (point)";
+							for (var k, i = 0; i < points.length; i++)
+							{
+								k = points.charCodeAt(i) - 48;
+								CompleteWord += k ==0? " Zero" : " " + word1[k];
+							}
+						}
+						
+						return CompleteWord;
+					} // NumberInWord_Bn
+				</pre>
+			<pre id="jsEn" class="brush: jscript">
+					function NumberInWord_En( number )
+					{
+						/***code_of_tns***/
+						
+						number = trim(number);
+						if (isNaN(parseFloat(number)) == true)
+							return "";
+						else if (parseFloat(number) == 0)
+							return "Zero";
+
+						number = number.toString().replace( ',', '' );
+
+						if (number == null || number == '' || parseFloat(number) == null)
+							return '';
+
+						var num = number.split('.');
+						number = trim(num[0]).replace(/^0+/g, ''); ;
+
+						var word1 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+										"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+										"Seventeen", "Eighteen", "Nineteen"];
+						var word2 = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+						var word3 = ["Hundred", "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintrillion"];
+
+						var f1, f2;   // flags
+						var i3, len, n1, n2;
+						var CompleteWord, tmp;
+
+						len = number.length - 1;
+						f1 = true;		// to denote - term of hundred
+						f2 = false;		// to denote - digit zero
+						i3 = 0;
+						CompleteWord = "";
+
+						for( ; len >= 0; len--, f1 = !f1 )
+						{
+							if( f1 == true )
+							{
+								i3++;
+								n1 = number.charCodeAt(len) - 48;		// converting char to int. eg. '2' -> 2
+
+								if( len > 0 )			// making tow-digit word
+								{
+									len--;
+									n2 = number.charCodeAt(len) - 48;
+									if (n2 * 10 + n1 < 20)	// if 10 to 19, then copy predifined digitWord num1[10..19]
+										tmp = word1[n2 * 10 + n1];
+									else				// making two digits inWord  >19
+									{
+										var t = word2[n2] != "" && word1[n1] != "" ? " " : "";
+										tmp = word2[n2] + t + word1[n1];
+									}
+								}
+								else tmp = word1[n1];
+
+								if( tmp != "" )		// creating Quantity-in-Word
+								{
+									var t = word3[i3] == "" ? "" : " " + word3[i3];
+									var s = CompleteWord == "" ? "" : " " + CompleteWord;
+									CompleteWord = tmp + t + s;
+									f2 = false;
+								}
+								else f2 = true;		// remember! empty word created.
+							}
+							else
+							{					// it is now the term to be hundred
+								n1 = number.charCodeAt(len) - 48;
+								tmp = word1[n1];
+								if( tmp != "" )
+								{
+									if (f2 == true && i3 > 1)
+									{
+										var t = word3[i3] == "" ? "" : word3[i3] + " ";
+										CompleteWord = tmp + " Hundred " + t + CompleteWord;
+									}
+									else
+										CompleteWord = tmp + " Hundred " + CompleteWord;
+								}
+							}
+						} // for loop
+						CompleteWord = trim(CompleteWord);
+						if (num.length > 1 && isNaN(parseInt(num[1])) == false && parseInt(num[1]) != 0)
+						{
+							var points = num[1].replace(/0+$/g, ''); ;
+							CompleteWord += " (point)";
+							for( var k, i = 0; i < points.length; i++ )
+							{
+								k = points.charCodeAt(i) - 48;
+								CompleteWord +=  (k==0? " Zero": " " + word1[k]);
+							}
+						}
+						
+						return CompleteWord;
+
+					} // NumberInWord_En
+				</pre>
+
+			<pre id="csBn" class="brush: csharp">
+					public string NumberInWord_Bn( object Number )
+					{
+						/***code_of_tns***/
+						
+						string number = "";
+						if( Number == null || Number == DBNull.Value )
+							return "";
+
+						number = Number.ToString().Trim();
+						decimal u;
+						if( decimal.TryParse( number, out u ) == false )
+							return "";
+						else if( u == 0 )
+							return "Zero";
+
+						string[] word1 = { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+										"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+										"Seventeen", "Eighteen", "Nineteen" };
+						string[] word2 = { "", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+						string[] word3 = { "", "", "Thousand", "Lac", "Crore" };
+
+						int i3, len, n1, n2;
+						string CompleteWord, tmp;
+
+						string[] parts = number.Split( '.' );
+						number = parts[0].TrimStart( '0' );
+						CompleteWord = "";
+						char[] d = parts[0].TrimStart( '0' ).ToCharArray();
+						i3 = 0;
+						len = d.Length - 1;
+
+						for( ; len >= 0; len--, i3 = ( i3 % 4 ) + 1 )	// for i3, cycle, 1 through 4
+						{
+							n1 = d[len] - 48;	// converting char to int. eg. '2' -> 2
+
+							if( i3 != 1 )		// if not the term of hundred
+							{
+								if( len > 0 )	// making tow-digit word
+								{
+									len--;
+									n2 = d[len] - 48;
+									if( n2 * 10 + n1 < 20 )	// if 10 to 19, then copy predifined digitWord num1[10..19]
+										tmp = word1[n2 * 10 + n1];
+									else				// making two digits inWord  >19
+										tmp = word2[n2] + ( word1[n1] == "" ? "" : " " + word1[n1] );
+										
+								}
+								else tmp = word1[n1];
+
+								// creating Quantity-in-Word---
+								if( i3 == 4 )		// always place crore, though zero
+									CompleteWord = ( tmp == "" ? "" : tmp + " " ) + "Crore " + CompleteWord;
+								else if( tmp != "" )
+								{
+									string t = word3[i3] == "" ? " " : " " + word3[i3] + " ";
+									CompleteWord = tmp + t + CompleteWord;
+								}
+							}
+							else if( n1 != 0 )		// it is now the term to be hundred
+								CompleteWord = word1[n1] + " Hundred " + CompleteWord;
+
+						} // for loop
+
+						CompleteWord = CompleteWord.Trim();
+						decimal v = 0;
+						if( parts.Length == 2
+							&& decimal.TryParse( parts[1].ToString(), out v ) == true 
+							&& v != 0 )
+						{
+							number = parts[1].TrimEnd('0');
+							CompleteWord += " (point)";
+							word1[0] = "Zero";
+							for( int k, i = 0; i < number.Length; i++ )
+							{
+								k = number[i] - 48;
+								CompleteWord += " " + word1[k];
+							}
+						}
+						
+						return CompleteWord;
+					}
+				</pre>
+			<pre id="csEn" class="brush: csharp">
+					public string NumberInWord_En( object Number )
+					{	
+						/***code_of_tns***/
+						
+						string number = "";
+						if( Number == null || Number == DBNull.Value )
+							return "";
+						
+						number = Number.ToString().Trim();
+						decimal u;
+						if( decimal.TryParse( number, out u ) == false )
+							return "";
+						else if( u == 0 )
+							return "Zero";
+						
+						string[] word1 = { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+										"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+										"Seventeen", "Eighteen", "Nineteen" };
+						string[] word2 = { "", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+						string[] word3 = { "Hundred", "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintrillion" };
+								
+						bool f1, f2;   // flags
+						int i3, len, n1, n2;
+						string CompleteWord, tmp, t;
+
+						string[] num = number.Split( '.' );
+						number = num[0].TrimStart( '0' );
+
+						len = number.Length - 1;
+						f1 = true;		// to denote - term of hundred
+						f2 = false;		// to denote - digit zero
+						i3 = 0;
+						CompleteWord = "";
+
+						for( ; len >= 0; len--, f1 = !f1 )
+						{
+							if( f1 == true )
+							{
+								i3++;
+								n1 = number[len] - 48;		// converting char to int. eg. '2' -> 2
+
+								if( len > 0 )			// making tow-digit word
+								{
+									len--;
+									n2 = number[len] - 48;
+									if( n2 * 10 + n1 < 20 )	// if 10 to 19, then copy predifined digitWord num1[10..19]
+										tmp = word1[n2 * 10 + n1];
+									else					// making two digits inWord  >19
+										tmp = word2[n2] + (word1[n1]==""? "" : " " + word1[n1]);
+								}
+								else tmp = word1[n1];
+
+								if( tmp != "" )		// creating Quantity-in-Word
+								{
+									t = word3[i3] == "" ? " " : " " + word3[i3] + " ";
+									CompleteWord = tmp + t + CompleteWord;
+									f2 = false;
+								}
+								else f2 = true;		// remember! empty word created.
+							}
+							else
+							{					// it is now the term to be hundred
+								n1 = number[len] - 48;
+								tmp = word1[n1];
+								if( tmp != "" )
+								{
+									if( f2 == true && i3 > 1 )
+										CompleteWord = tmp + " Hundred " + word3[i3] + " " + CompleteWord;
+									else
+										CompleteWord = tmp + " Hundred " + CompleteWord;
+								}
+							}
+						} // for loop
+						CompleteWord = CompleteWord.Trim();
+						if( num.Length == 2 && decimal.Parse( num[1] ) != 0 )
+						{
+							number = num[1].TrimEnd('0');
+							CompleteWord += " (point)";
+							word1[0] = "Zero";
+							for( int i = 0; i < number.Length; i++ )
+							{
+								int k = Convert.ToInt16( number[i] ) - 48;
+								CompleteWord += " " + word1[k];
+							}
+						}
+						
+						return CompleteWord;
+
+					}
+				</pre>
+		</div>
+	</fieldset>
+</body>
+</html>

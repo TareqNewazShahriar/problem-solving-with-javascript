@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Maximum Sum - Dynamic Programming</title>
+
+    <style type="text/css">
+        #fieldsScroller { border:1px silver solid; max-height:500px; overflow:auto; }
+        #matrix td { padding: 5px; }
+        #matrix td { border: 2px white solid; }
+        #spoilerPanel { border: 1px silver solid; display:none; }
+        .description { margin-top:100px; font: 10pt consolas, 'Comic Sans MS'; }
+        .description td:nth-child(1) { padding-right:20px; }
+        .description td { border-bottom:1px silver solid; }
+        @media (max-width: 400px)
+        {
+            html, body { font-size:13pt; }
+        }
+    </style>    
+</head>
+<body>
+    <a href="../index.html">JS Programming</a> / Maximum Sum
+    <hr>
+    
+    <main>
+        <div style="float:right; font-size:9pt; font-style:italic">doesn't support IE&lt;9</div>
+    
+        <h4>Find Maximum Sum (Dynamic Programming)</h4>
+    
+        <p>Given a 2-dimensional array of positive and negative integers, find the sub-rectangle with the largest sum.</p>
+        <p>The 2D array will be an NxN matrix.</p>
+        <p>Input N: (mild input validation added)</p>
+        <input id="txtN" type="text" value="10" />
+        <br /><br />
+    
+        <input id="btnCreateInput" type="button" value="Create input fields" />
+        / 
+        <input id="btnCreateInputWithRandom" type="button" data-random="true" value="Create input fields with random values" />
+        <br /><br />
+    
+        <div id="fieldsScroller">
+            <table id="matrix"></table>
+        </div>
+        <br /><br />
+    
+        <fieldset id="spoilerPanel">
+            <legend>Spoiler Panel</legend>
+            <input id="btnSolve" type="button" value="Spoil all the fun" />
+            &nbsp; &nbsp; <span id="solutionLabel"></span>
+        </fieldset>
+    </main>
+    <footer>
+        <table class="description">
+            <tr>
+                <td colspan="2">About the problem and solution</td>
+            </tr>
+            <tr>
+                <td>UVa Problem</td>
+                <td>
+                    <a target="_blank" href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=44">108 Maximum Sum</a>
+                    Vol-1
+                    (<a target="_blank" href="http://uva.onlinejudge.org/external/1/108.html">Alternative link</a>)
+                </td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>DP</td>
+            </tr>
+            <tr>
+                <td>Difficulty</td>
+                <td><a target="_blank" href="https://www.comp.nus.edu.sg/~stevenha/programming/vol1.html">7/10</a></td>
+            </tr>
+            <tr>
+                <td>Performance of <br />the solution code</td>
+                <td>36 miliseconds<br />C++, UVa GCC compiler</td>
+            </tr>
+            <tr>
+                <td>Code complexity</td>
+                <td>O(n<sup>4</sup>)</td>
+            </tr>
+        </table>
+        <br /><br />
+        <script src="maximum-sum.js" type="text/javascript"></script>
+    </footer>        
+</body>
+</html>

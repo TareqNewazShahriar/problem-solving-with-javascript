@@ -1,6 +1,4 @@
-﻿/// <reference path="../../Scripts/common.js" />
-
-window.onload = function()
+﻿window.onload = function()
 {
 	document.getElementById('num').onkeypress = inword;
 	document.getElementById('ddlCode').onchange = displayCode;

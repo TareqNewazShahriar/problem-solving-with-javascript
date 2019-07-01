@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+	<title>Money Doubled Riddle</title>
+
+	<link href="money-doubled.css" rel="stylesheet" type="text/css" />
+	<script src="../app/js/main.js" type="text/javascript"></script>
+	<script src="money-doubled.js" type="text/javascript"></script>
+</head>
+<body>
+	<a href="../index.html">JS Programming</a> / Money Doubled
+	<hr>
+
+	<div id="proof"></div>
+	<a id="lang" href="#">English</a>
+	<p class="bn text">
+		<b>সমস্যা</b><br/>
+		৪ কোনা একটা পুকুরের কথা চিন্তা করা যাক যার যেকোন কোনায় কিছু টাকা নিয়ে ডুব দিয়ে উঠলে টাকা দিগুণ হয়ে যায়। আপনাকে বলা হল কিছু টাকা
+		নিয়ে এর প্রথম কোনায় ডুব দিতে এবং ডুব দিয়ে উঠার পর এই কোনায় একটা নির্দিষ্ট পরিমাণ টাকা রাখতে। তারপর ২য় কোনায় ডুব দিয়ে উঠার পর
+		আগে যে পরিমাণ টাকা রেখেছিলেন ঠিক সেই পরিমাণ টাকা রাখতে। এভাবে এর প্রত্যেক কোনায় ডুব দিয়ে উঠে প্রথমবার যত টাকা রেখেছিলেন প্রত্যেক
+		কোনায় ঠিক সেই পরিমাণ টাকা রাখতে হবে এবং শেষ কোনায় ডুব দিয়ে টাকা রাখার পর হাতে যেন কোনো টাকা না থাকে।<br/>
+		এখন আপনাকে বের করতে হবে কত পরিমাণ টাকা নিয়ে শুরু করলে এবং কত করে রাখলে শেষে হাতে কোন টাকা অবশিষ্ট থাকবে না।<br/>
+		<br />
+		বি:দ্র: <br/>
+		১। রাখা টাকার পরিমাণ শূণ্যের চেয়ে বেশি হতে হবে।<br/>
+		২। শুরু করা টাকার অঙ্কে বা প্রত্যেকবার টাকা রাখার ক্ষেত্রে ভগ্নাংশও গ্রহনযোগ্য।
+	</p>
+	<p class="en text">
+		<strong>Money Doubling Riddle</strong><br />
+		Think about a pond where, when someone dives to any corner of it with some money and comes up, 
+		his/her money becomes doubled. You are told to dive to the  corners of the pond with some money 
+		and to put a specific amount of money in that corner. Then dive to the 2nd corner, comes up, 
+		and put the same amount of money you put on the 1st corner. Dive to every corner of the pond 
+		in the same way, come up and put the same amount in every corner. Continue until you dive to 
+		all four corners. <br />
+		Now you have to find out that, how much to start with and how much money to
+		put each time so that you have no money left at the end.<br />
+		<br />
+		Hints:<br />
+		1. The amount of money that to put, should be above zero.<br />
+		2. Fraction is acceptable too in case of the starting money or the money to put.
+	</p>
+	
+	<a id="solution" href="#">সমাধান প্যানেল দেখান</a>
+	<div id="solutionPanel" class="hide">
+		<hr>
+		<table>
+			<tr>
+				<td>
+					<span class="bn">শুরুর টাকা</span>
+					<span class="en">Initial Money</span>
+				</td>
+				<td>:</td>
+				<td>
+					<span class="bn">প্রত্যেকবার রাখার পরিমাণ</span>
+					<span class="en">Put Each Time</span>
+				</td>
+			</tr>
+			<tr>
+				<td><input id="txtInHand" type="text" onkeypress="delay(1)" /></td>
+				<td>:</td>
+				<td><input id="txtPut" type="text" onkeypress="delay(2)" /></td>
+			</tr>
+		</table>
+		<br />
+		<table id="tblResult" rules="all" cellpadding="3" style="border:1px solid black; max-width: 600px;">
+			<tr>
+				<th></th>
+				<th>
+					<span class="bn">টাকা</span>
+					<span class="en">Money in Hand</span>
+				</th>
+				<th>
+					<span class="bn">দ্বিগুণ</span>
+					<span class="en">Double</span>
+				</th>
+				<th>
+					<span class="bn">রাখতে হবে</span>
+					<span class="en">Have to Put</span>
+				</th>
+				<th>
+					<span class="bn">অবশিষ্ট</span>
+					<span class="en">Remain</span>
+				</th>
+			</tr>
+		</table>
+	</div>
+	<!--<div class="en">
+		<table>
+			<tr>
+				<td colspan="2"><strong>Special Thanks</strong></td>
+			</tr>
+			<tr>
+				<td>Riddle</td><td>Imtiak</td>
+			</tr>
+			<tr>
+				<td>Riddle Translation</td><td>My little cousin, Nazif</td>
+			</tr>
+		</table>
+	</div>
+	<div class="bn">
+		<table>
+			<tr>
+				<td colspan="2"><strong>বিশেষ ধন্যবাদ</strong></td>
+			</tr>
+			<tr>
+				<td>ধাঁধাঁ</td><td>ইমতিয়াক</td>
+			</tr>
+			<tr>
+				<td>ধাঁধাঁর ইংরেজি অনুবাদ</td><td>মুহাম্মাদ ইবনুল মাহবুব (নাজিফ)</td>
+			</tr>
+		</table>
+	</div>-->
+		
+</body>
+</html>

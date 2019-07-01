@@ -232,19 +232,17 @@ function sonLabelLanguage(vasha)
 }
 function changeLanguage(dom)
 {
-	if (dom.currentTarget.innerHTML == 'English')
-	{
-	    vasha = Lang.Bangla;
-	    dom.currentTarget.innerHTML = 'বাংলা';
-	    document.getElementById('calculate').value = 'সমাধান';
-	    document.getElementsByTagName('body').item(0).setAttribute('class', 'bn');
-	}
-	else
+	if (dom.currentTarget.innerText.indexOf('English')>=0)
 	{
 	    vasha = Lang.English;
-	    dom.currentTarget.innerHTML = 'English';
 	    document.getElementById('calculate').value = 'Solve';
 	    document.getElementsByTagName('body').item(0).setAttribute('class', 'en');
+	}
+	else
+	{   
+	    vasha = Lang.Bangla;
+	    document.getElementById('calculate').value = 'সমাধান';
+	    document.getElementsByTagName('body').item(0).setAttribute('class', 'bn');
 	}
 	if (calcYet == 1)
 	{

@@ -3,7 +3,7 @@ function flipTheText()
 {
 	try
 	{
-	    var text = document.getElementById('ctl00_ctl00_cphContent_cphContent_txtText').value;
+	    var text = document.getElementById('txtText').value;
 		var result = flipString(text);
 		var res = result.split('\n');
 		var flipTxt = "";
@@ -14,7 +14,7 @@ function flipTheText()
 		if (flipTxt == "\n")
 			flipTxt = "";
 		
-		document.getElementById('ctl00_ctl00_cphContent_cphContent_txtFlipped').value = flipTxt;
+		document.getElementById('txtFlipped').value = flipTxt;
 		showHideSelectButton(flipTxt.length);
 
 		setFlash();		
@@ -254,7 +254,7 @@ function flipChar(c)
 
 function selectText()
 {
-    document.getElementById('ctl00_ctl00_cphContent_cphContent_txtFlipped').select();
+    document.getElementById('txtFlipped').select();
 }
 
 function queryString(key)

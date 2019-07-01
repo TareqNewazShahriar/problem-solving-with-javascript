@@ -1,4 +1,4 @@
-﻿
+
 var Lang = { Bangla: 0, English: 1 };
 
 function trim(str) // prototype not used, for compatibility issue

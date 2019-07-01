@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+	<title>Upside-down Text</title>
+
+	<link type="text/css" rel="stylesheet" href="../app/css/main.css">
+	<script src="upside-down-text.js" type="text/javascript"></script>
+</head>
+<body>
+	<a href="../index.html">JS Programming</a> / Upside-down Text
+	<hr>
+
+	<div class="mid commonWidth">
+		<table class="commonWidth">
+			<tr>
+				<th>
+					<span class="title">Enter your text and make it upside-down</span><br />
+				</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td valign="top">Your Text</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea ID="txtText" class="multiText" onkeyup="flipTheText()"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span style="float:left;">Upside-down Text </span>
+					<input id="sel" type="button" class="customButton" onclick="selectText()"
+						style="float:right; display:none;height:18px;" value="Select All" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="holder">
+						<textarea ID="txtFlipped" class="multiText"></textarea>
+						<div id="flashDiv"></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

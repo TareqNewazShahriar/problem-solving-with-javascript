@@ -1,6 +1,4 @@
-﻿/// <reference path="../../Scripts/common.js" />
-
-//-----------------On Load function-------------------
+﻿//-----------------On Load function-------------------
 window.onload = function ()
 {
 	BindEvent('click', document.getElementById('lang'), changeLanguage);

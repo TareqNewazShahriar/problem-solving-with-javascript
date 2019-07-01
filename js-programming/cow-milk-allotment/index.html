@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Cow-milk Allotment Riddle</title>
+
+	<link href="cow-milk-allotment.css" rel="stylesheet" type="text/css" />
+	<script src="../app/js/main.js" type="text/javascript"></script>
+	<script src="cow-milk-allotment.js" type="text/javascript"></script>
+</head>
+<body>
+	<a href="../index.html">JS Programming</a> / Cow-milk Allotment
+	<hr>
+	
+	<div>
+		<a id="lang" href="javascript:void(0);">
+			<label class="en">বাংলা</label>
+			<label class="bn">English</label>
+		</a>
+	</div>
+	<p class="bn">
+		<b>সমস্যা</b><br/>
+		এক লোকের ৪৯টি গরু আছে। ১ম গরু দেয় ১ কেজি দুধ, ২য় গরু ২ কেজি,.. এভাবে ৪৯তম গরু দেয় ৪৯ কেজি দুধ।
+		তার ৭টি ছেলে আছে।
+		তার মৃত্যুর পর ৪৯ টি গরু ৭ জনের মধ্যে এমনভাবে ভাগ করতে হবে যেন সবাই সমান সংখ্যক গরু পায় এবং প্রত্যেকের মোট দুধের পরিমাণও সমান থাকে।
+		<br/>(এই সমস্যা যেকোন সংখ্যক লোকের ক্ষেত্রেও সমাধান করা যায়)
+	</p>
+	<p class="en">
+			<b>Problem</b><br/>
+			A man has 49 cows. The first cow gives 1 KG of milk, the second cow gives 2 KGs of milk, and in this way the 49th cow gives 49 KGs of milk. The man has 7 sons. After his death, the 49 cows have to be divided among his 7 sons in such a way that all of them will get the equal number of cows and everyones' amount of milk will be same.<br />
+			(This problem can be solved for any number of sons.)
+	</p>
+	
+	<a id="solution" href="#">সমাধান প্যানেল দেখান</a>
+	<div id="solutionPanel" class="hide">
+		<div class="bn">
+			<p style="border:1px solid gray;"></p>
+			<label>ছেলেদের সংখ্যা ইনপুট দিন, যাদের মধ্যে গরু ও দুধ সমান ভাগে ভাগ করা হবে:</label><br />
+		</div>
+		<div class="en">
+			<p style="border:1px solid gray;"></p>
+			<p>Input the number of the persons, between whom the cows and milk will be divided equally:</p>
+		</div>
+		
+		<input id="person" type="text" />
+		<button id="calculate" type="button">
+			<span class="bn">সমাধান</span>
+			<span class="en">Solution</span>
+		</button>
+		
+		<br /><br />
+		
+		<div id="text"></div>
+		
+		<ul id="list"></ul>
+		<br />
+		<div style="overflow:auto;">
+			<table id="tbl" rules="all" cellpadding="3" cellspacing="3" class="tbl">
+			</table>
+		</div>
+	</div>
+	
+	<div class="bn gap">
+		<table>
+			<!--<tr>
+				<td colspan="2"><strong>বিশেষ ধন্যবাদ</strong></td>
+			</tr>
+			<tr>
+				<td>ধাঁধাঁ</td><td>মুহিবুল ইসলাম মইন</td>
+			</tr>
+			<tr>
+				<td>ধাঁধাঁর ইংরেজি অনুবাদ</td><td>মুহাম্মাদ ইবনুল মাহবুব (নাজিফ)</td>
+			</tr>-->
+			<tr>
+				<td colspan="2">কোন ধরনের জাভাস্ক্রিপ্টের লাইব্রেরি ব্যবহার করা হয় নি</td>
+			</tr>
+		</table>
+	</div>
+	<div class="en">
+		<table>
+			<!--<tr>
+				<td colspan="2"><strong>Special Thanks</strong></td>
+			</tr>
+			<tr>
+				<td>Riddle From</td><td>Moin</td>
+			</tr>
+			<tr>
+				<td>Riddle Translation</td><td>My little cousin, Nazif</td>
+			</tr>-->
+			<tr>
+				<td colspan="2">No third party Javascript libraries were used.</td>
+			</tr>
+		</table>
+	</div>	
+</body>
+</html>

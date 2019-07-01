@@ -64,12 +64,20 @@ function genRandom()
 function Solve()
 {
     var n = parseInt(document.getElementById('txtN').value);
+    resetAnyPreviousBorder(n);
     init2dArrays(n);
     input(n);
     var rect = find_max_rectangle(n);
-    document.getElementById('solutionLabel').innerHTML = 'Maximum Sum: ' + rect.max;
-        //' | Max sub-rectangle: (' + rect.x1 + ', ' + rect.y1 + ') (' + rect.x2 + ', ' + rect.y2 + ')';
+    document.getElementById('solutionLabel').innerHTML = 'Maximum Sum: ' + rect.max + 
+        ' | Max sub-rectangle: (' + rect.y1 + ', ' + rect.x1 + ') (' + rect.y2 + ', ' + rect.x2 + ')';
     drawMaxRectangle(rect, 'black');
+}
+
+function resetAnyPreviousBorder()
+{
+    document.querySelectorAll('table#matrix td').forEach(function(x) {
+            x.style.border = 'none';
+        });
 }
 
 function init2dArrays(n)
