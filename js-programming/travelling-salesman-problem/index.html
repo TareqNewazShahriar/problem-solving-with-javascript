@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travelling Salesman Problem | Dynamic Programming | Js Programming</title>
+    <title>Travelling Salesman Problem | Dynamic Programming | JS Programming</title>
 </head>
 <body>
-    <canvas id="canvas-panel"
+    <canvas id="canvas-element"
         height="400"
         width="400"
         style="border: 1px solid black;"></canvas>
 
-    <section>
+    <section data-scripts>
         <script src="canvas.js"></script>
+        <script src="travellingSalesman.js"></script>
         <script src="main.js"></script>
+        <script>
+            new Main('#canvas-element').init();
+        </script>
     </section>
 </body>
 </html>
