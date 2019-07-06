@@ -1,9 +1,11 @@
 function TravellingSalesman(allPoints)
 {
+    /*** Private Variables ***/
     const _allPoints = allPoints;
     var distances2D = [];   // TODO: turn it into memo dictionary for memoization; 
                             // like: { "0_2_1_3": 234.54, ... }  
 
+    /*** Public Methods ***/
     this.start = function()
     {
         setDistances();
@@ -11,6 +13,7 @@ function TravellingSalesman(allPoints)
         return recursion(_allPoints, startingPoint);
     }
 
+    /*** Private Methods ***/
     function setDistances()
     {
         for (let i = 0; i < _allPoints.length; i++)
