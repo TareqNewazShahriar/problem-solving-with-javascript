@@ -2,15 +2,16 @@ function Canvas(canvasSelector)
 {
     /* Private variables */
     var canvas = document.querySelector(canvasSelector);
-    var points = [];
+    var originalPoints = [];
+    var _orderedPoints = [];
     
     /*** Public methods ***/
 
     this.drawPointOnClickedLocation = function(clickedX, clickedY)
     {
-        let point = getClickedPosition(clickedX, clickedY, points.length);
-        points.push(point);
-        drawPoints([point], points.length);
+        let point = getClickedPosition(clickedX, clickedY, originalPoints.length);
+        originalPoints.push(point);
+        drawPoints([point], originalPoints.length === 1);
     }
 
     this.getCanvas = function()
@@ -20,25 +21,56 @@ function Canvas(canvasSelector)
 
     this.getPoints = function()
     {
-        return points;
+        return originalPoints.slice();
     }
+
+    this.connectTheDots = function(_points)
+    {
+        if(_orderedPoints.length)
+            connectPoints(_orderedPoints, '#fff', 2);
+        
+        connectPoints(_points, '#c2c2c2');
+
+        _orderedPoints = _points;
+        drawPoints(originalPoints, 1);
+    }
+
+
 
     /*** Private methods ***/
 
-    function drawPoints(pointsToDraw, totalPoints)
+    function connectPoints(_points, color, lineWidth)
+    {
+        let cContext = canvas.getContext('2d');
+        cContext.strokeStyle = color;
+        cContext.lineWidth = lineWidth ? lineWidth : 1;
+        for (let i = 1; i < _points.length; i++) {
+            let p1 = _points[i-1];
+            let p2 = _points[i];
+            cContext.beginPath();
+            cContext.moveTo(p1.x, p1.y);
+            cContext.lineTo(p2.x, p2.y);
+            cContext.stroke();
+        }
+    }
+
+    function drawPoints(pointsToDraw, firstPointIsZero)
     {
         let cContext = canvas.getContext('2d');
         for (let i = 0; i < pointsToDraw.length; i++)
         {
             const p = pointsToDraw[i];
-            cContext.fillStyle = totalPoints === 1? '#55dd55' : '#5555dd';
+
+            // draw the point
+            cContext.fillStyle = firstPointIsZero && i === 0 ? '#4499dd' : '#5555dd';
             cContext.beginPath();
             cContext.arc(p.x, p.y, 7, 0, Math.PI*2, false);
             cContext.fill();
             
+            // add number
             cContext.fillStyle = '#fff';
             cContext.font = "10px Arial";
-            cContext.fillText(p.sl.toString(), p.x-3, p.y+3);
+            cContext.fillText(p.sl.toString(), p.x-(p.sl<10?3:6), p.y+3);
         }
     }
 

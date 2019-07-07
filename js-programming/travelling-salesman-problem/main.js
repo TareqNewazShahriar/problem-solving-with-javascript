@@ -23,8 +23,10 @@ function Main(canvasSelector)
 			clearTimeout(travelTaskRef);
 		
 		travelTaskRef = setTimeout(() => {
-			console.log(new TravellingSalesman(canvasObj.getPoints().slice()).start());
-		}, 3500);
+			let result = new TravellingSalesman(canvasObj.getPoints()).start();
+			console.log(result);
+			canvasObj.connectTheDots(result.orderedPoints);
+		}, 3000);
 	}
 
 	function getColor(colorNumber, newColor)
