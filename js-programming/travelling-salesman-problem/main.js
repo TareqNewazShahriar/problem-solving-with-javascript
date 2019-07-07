@@ -1,31 +1,40 @@
 function Main(canvasSelector)
 {
 	/* Private Variables */
-	var canvasObj = new Canvas(canvasSelector);
+	var canvasInstance = new Canvas(canvasSelector);
 	var colorNumber = 0;
 	var travelTaskRef;
 	
 	/* Public Methods */
 	this.init = function()
 	{
-		canvasObj.getCanvas().addEventListener('click', function(e)
+		setCanvasDimension();
+		canvasInstance.getCanvas().addEventListener('click', function(e)
         {
-			canvasObj.drawPointOnClickedLocation(e.clientX, e.clientY);
-			if(canvasObj.getPoints().length > 1)
+			canvasInstance.drawPointOnClickedLocation(e.clientX, e.clientY);
+			if(canvasInstance.getPoints().length > 1)
 				travelCountdown();
         });
 	}
 
-	/* Private Methods */
+	/*** Private Methods ***/
+
+	function setCanvasDimension()
+	{
+		let canvasElem = canvasInstance.getCanvas();
+		canvasElem.setAttribute('height', window.innerHeight-70);
+		canvasElem.setAttribute('width', window.innerWidth);
+	}
+
 	function travelCountdown()
 	{
 		if(travelTaskRef)
 			clearTimeout(travelTaskRef);
 		
 		travelTaskRef = setTimeout(() => {
-			let result = new TravellingSalesman(canvasObj.getPoints()).start();
+			let result = new TravellingSalesman(canvasInstance.getPoints()).start();
 			console.log(result);
-			canvasObj.connectTheDots(result.orderedPoints);
+			canvasInstance.connectTheDots(result.orderedPoints);
 		}, 3000);
 	}
 

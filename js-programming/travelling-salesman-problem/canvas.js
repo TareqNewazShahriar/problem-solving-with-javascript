@@ -62,13 +62,13 @@ function Canvas(canvasSelector)
             const p = pointsToDraw[i];
 
             // draw the point
-            cContext.fillStyle = firstPointIsZero && i === 0 ? '#4499dd' : '#5555dd';
+            cContext.fillStyle = firstPointIsZero && i === 0 ? '#44dd44' : '#4444dd';
             cContext.beginPath();
             cContext.arc(p.x, p.y, 7, 0, Math.PI*2, false);
             cContext.fill();
             
             // add number
-            cContext.fillStyle = '#fff';
+            cContext.fillStyle = '#ffffff';
             cContext.font = "10px Arial";
             cContext.fillText(p.sl.toString(), p.x-(p.sl<10?3:6), p.y+3);
         }
