@@ -22,8 +22,18 @@ function Main(canvasSelector)
 	function setCanvasDimension()
 	{
 		let canvasElem = canvasInstance.getCanvas();
-		canvasElem.setAttribute('height', window.innerHeight-70);
-		canvasElem.setAttribute('width', window.innerWidth);
+		canvasElem.setAttribute('height', getScreenHeight()-150);
+		canvasElem.setAttribute('width', getScreenWidth()-40);
+	}
+
+	function getScreenHeight()
+	{
+		return Math.min(window.screen.availHeight, window.screen.height, window.innerHeight, window.outerHeight);
+	}
+
+	function getScreenWidth()
+	{
+		return Math.min(window.screen.availWidth, window.screen.width, window.innerWidth, window.outerWidth);
 	}
 
 	function travelCountdown()
