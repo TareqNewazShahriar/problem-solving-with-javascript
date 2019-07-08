@@ -62,7 +62,7 @@ function Canvas(canvasSelector)
             const p = pointsToDraw[i];
 
             // draw the point
-            cContext.fillStyle = firstPointIsZero && i === 0 ? '#44dd44' : '#4444dd';
+            cContext.fillStyle = firstPointIsZero && i === 0 ? '#66bb66' : '#4444dd';
             cContext.beginPath();
             cContext.arc(p.x, p.y, 7, 0, Math.PI*2, false);
             cContext.fill();

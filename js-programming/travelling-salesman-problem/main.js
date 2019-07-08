@@ -39,13 +39,24 @@ function Main(canvasSelector)
 	function travelCountdown()
 	{
 		if(travelTaskRef)
+		{
 			clearTimeout(travelTaskRef);
+			travelTaskRef = null;
+		}
 		
 		travelTaskRef = setTimeout(() => {
 			let result = new TravellingSalesman(canvasInstance.getPoints()).start();
 			console.log(result);
 			canvasInstance.connectTheDots(result.orderedPoints);
+			showResult(result.totalDistance);
 		}, 3000);
+	}
+
+	function showResult(totalDistance)
+	{
+		let panel = document.querySelector('#distance');
+		panel.style.display = 'block';
+		panel.querySelector('#total-distance').innerHTML = totalDistance.toFixed(2);
 	}
 
 	function getColor(colorNumber, newColor)
