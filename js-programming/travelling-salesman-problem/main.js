@@ -55,7 +55,7 @@ function Main(canvasSelector)
 	function showResult(totalDistance)
 	{
 		let panel = document.querySelector('#distance');
-		panel.style.display = 'block';
+		panel.style.color = 'black';
 		panel.querySelector('#total-distance').innerHTML = totalDistance.toFixed(2);
 	}
 
