@@ -5,8 +5,7 @@ This project is hosted <a target="_blank" href="http://sanjedashawon.rocks/shawo
 
 ### Programming with Javascript
 
-**Problem Solving**
- * Maximum Sum - Dynamic Programming
+**Riddle**
  * Cow-Milk Allotment Riddle
  * Money Doubling Riddle
  
@@ -15,3 +14,7 @@ This project is hosted <a target="_blank" href="http://sanjedashawon.rocks/shawo
   
 **Fun**
   * Upside-down Text
+
+**Algorithm**
+* Maximum Sum - Dynamic Programming
+* Travelling Salesman Problem - Brute force
