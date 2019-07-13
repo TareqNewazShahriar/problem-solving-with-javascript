@@ -45,11 +45,11 @@ function Main(canvasSelector)
 		}
 		
 		travelTaskRef = setTimeout(() => {
-			let result = new TravellingSalesman(canvasInstance.getPoints()).start(true);
+			let result = new TravellingSalesman(canvasInstance.getPoints()).start();
 			console.log(result);
 			canvasInstance.connectTheDots(result.orderedPoints);
 			showResult(result.totalDistance);
-		}, 3000);
+		}, 2500);
 	}
 
 	function showResult(totalDistance)
