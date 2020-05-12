@@ -5,6 +5,10 @@ This project is hosted <a target="_blank" href="https://tareqnewazshahriar.githu
 
 ### Programming with Javascript
 
+**Algorithm**
+* Maximum Sum - Dynamic Programming
+* Travelling Salesman Problem - Brute force
+
 **Riddle**
  * Cow-Milk Allotment Riddle
  * Money Doubling Riddle
@@ -14,7 +18,3 @@ This project is hosted <a target="_blank" href="https://tareqnewazshahriar.githu
   
 **Fun**
   * Upside-down Text
-
-**Algorithm**
-* Maximum Sum - Dynamic Programming
-* Travelling Salesman Problem - Brute force
