@@ -3,6 +3,11 @@ body
 	font-size: 11pt;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+h2, h3, h4, h5 {
+	margin-bottom: 0.5rem;
+}
+
 a { color: #005E9B; }
 a:hover { text-decoration:underline; }
 a:visited { color: #336699; }
