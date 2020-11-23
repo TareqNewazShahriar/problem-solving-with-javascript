@@ -5,4 +5,4 @@
 .en .en { DISPLAY: block; }
 .hide { DISPLAY: none; }
 .text { max-width:600px; text-align:justify; }
-#proof { background-color: #FFFFD5; border:1px solid orange; display:none; height: 20px; padding: 10px; }
+#proof { background-color: #FFFFD5; border:1px solid orange; display:none; padding: 10px; }

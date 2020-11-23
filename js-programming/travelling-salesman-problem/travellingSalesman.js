@@ -1,29 +1,27 @@
-function TravellingSalesman(_allPoints, _memo)
+function TravellingSalesman(_memo)
 {
 	/*** Private Variables ***/
-	const allPoints = _allPoints;
 	let memo = _memo;
 	var routes = {};    // TODO: turn it into memo dictionary for memoization; 
 						// like: { "0_2_1_3": 234.54, ... }
 
 	/*** Public Methods ***/
-	this.start = function ()
+	this.start = function (allPoints)
 	{
-		memo = memo;
-		setDistances();
+		setDistances(allPoints);
 		let startingPoint = allPoints.shift();
-		return findOptimizedRoute(allPoints, startingPoint);
+		return findOptimizedRoute(startingPoint, allPoints);
 	}
 
 	/*** Private Methods ***/
-	function setDistances()
+	function setDistances(allPoints)
 	{
 		for (let i = 0; i < allPoints.length; i++) 
 		{
 			for (let j = i; j < allPoints.length; j++)
 			{
 				routes[`${i}_${j}`] = { totalDistance: calcDistance(allPoints[i], allPoints[j]), orderedPoints: [allPoints[i], allPoints[j]] };
-				routes[`${j}_${i}`] = { totalDistance: routes[`${i}_${j}`].totalDistance, orderedPoints: [allPoints[j], allPoints[i]] };
+				routes[`${j}_${i}`] = { totalDistance: routes[`${i}_${j}`].totalDistance, orderedPoints: [ allPoints[j], allPoints[i] ] };
 			}
 		}
 	}
@@ -36,13 +34,8 @@ function TravellingSalesman(_allPoints, _memo)
 		return Math.sqrt(a * a + b * b); // Math.hypot
 	}
 
-	function findOptimizedRoute(points, parentPoint)
+	function findOptimizedRoute(parentPoint, points)
 	{
-		let routing = checkRoutes(points, parentPoint);
-
-		if (routing.result)
-			return routing.result;
-
 		let result = { totalDistance: Infinity, orderedPoints: [] };
 
 		if (points.length > 1)
@@ -51,16 +44,27 @@ function TravellingSalesman(_allPoints, _memo)
 			{
 				let pointsCloned = points.slice();
 				pointsCloned.splice(i, 1);
-				let currentResult = findOptimizedRoute(pointsCloned, points[i]);
-				currentResult.totalDistance = currentResult.totalDistance + routes[`${parentPoint.sl}_${currentResult.orderedPoints[0].sl}`].totalDistance;
-				if (currentResult.totalDistance < result.totalDistance)
+
+				let routing = checkEvaluatedRoutes(points[i], pointsCloned);
+				if (routing.result == null)
 				{
+					let currentResult = findOptimizedRoute(points[i], pointsCloned);
 					currentResult.orderedPoints.unshift(parentPoint);
-					result = JSON.parse(JSON.stringify(currentResult));
+					let firstTwo = `${currentResult.orderedPoints[0].sl}_${currentResult.orderedPoints[1].sl}`;
+					currentResult.totalDistance = routes[firstTwo].totalDistance + currentResult.totalDistance;
+					
+					routes[currentResult.orderedPoints.map(x=>x.sl).join('_')] = currentResult;
+
+					if (currentResult.totalDistance < result.totalDistance)
+					{
+						result = JSON.parse(JSON.stringify(currentResult));
+					}
+				}
+				else
+				{
+					routing.result;
 				}
 			}
-			// add the resultant route to the routes dictionary
-			routes[routing.paths] = result;
 		}
 		else
 		{
@@ -70,11 +74,10 @@ function TravellingSalesman(_allPoints, _memo)
 		return result;
 	}
 
-	function checkRoutes(points, parentPoint)
+	function checkEvaluatedRoutes(parentPoint, points)
 	{
-		points = points.slice();
 		points.unshift(parentPoint);
-		let paths = points.length === 2 ? points.map(x => x.sl).join('_') : points.map(x => x.sl).sort((a, b) => a - b).join('_');
+		let paths = points.map(x => x.sl).join('_');
 		if (memo && routes.hasOwnProperty(paths))
 			return { paths: paths, result: routes[paths] };
 

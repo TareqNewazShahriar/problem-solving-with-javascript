@@ -45,7 +45,7 @@ function Main(canvasSelector)
 		}
 		
 		travelTaskRef = setTimeout(() => {
-			let result = new TravellingSalesman(canvasInstance.getPoints()).start(true);
+			let result = new TravellingSalesman(true).start(canvasInstance.getPoints());
 			console.log(result);
 			canvasInstance.connectTheDots(result.orderedPoints);
 			showResult(result.totalDistance);
