@@ -1,4 +1,4 @@
-# Programming With Javascript
+# Programming with Javascript
 Solving riddles, solving problems using algorithm and more... with fun aka. Javascript.
 
 Go to the <a target="_blank" href="https://tareqnewazshahriar.github.io/Programming-with-Javascript-is-Fun/js-programming">project</a> and have fun.
