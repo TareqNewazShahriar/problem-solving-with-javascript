@@ -50,11 +50,14 @@ function Main(canvasSelector)
 			panel.style.visibility = 'visible';
 			panel.querySelector('#total-distance').innerHTML = '(processing...)';
 
-			// start processing
-			let result = new TravellingSalesman(canvasInstance.getPoints()).start();
-			console.log(result);
-			canvasInstance.connectTheDots(result.orderedPoints);
-			showResult(result.totalDistance);
+			// start processing.
+			// Using another setTimeout to let the dom update, before starting the process.
+			setTimeout(() => {
+				let result = new TravellingSalesman(canvasInstance.getPoints()).start();
+				console.log(result);
+				canvasInstance.connectTheDots(result.orderedPoints);
+				showResult(result.totalDistance);
+			}, 150);
 		}, 2500);
 	}
 
