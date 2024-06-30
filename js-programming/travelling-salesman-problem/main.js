@@ -46,18 +46,20 @@ function Main(canvasSelector)
 		
 		travelTaskRef = setTimeout(() => {
 			// show loader message
+			// Note: this DOM changes doesn't reflect on the UI untill the entire
+			//      js processing finished. Wrapping the prossing into another setTimeout 
+			// 		didn't work in Firefox.v127, even with 1000ms delay.
 			let panel = document.querySelector('#distance');
 			panel.style.visibility = 'visible';
 			panel.querySelector('#total-distance').innerHTML = '(processing...)';
 
 			// start processing.
-			// Using another setTimeout to let the dom update, before starting the process.
 			setTimeout(() => {
 				let result = new TravellingSalesman(canvasInstance.getPoints()).start();
 				console.log(result);
 				canvasInstance.connectTheDots(result.orderedPoints);
 				showResult(result.totalDistance);
-			}, 1000);
+			}, 500);
 		}, 2500);
 	}
 
