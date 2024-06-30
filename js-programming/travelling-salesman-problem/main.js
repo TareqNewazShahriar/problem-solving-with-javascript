@@ -45,6 +45,12 @@ function Main(canvasSelector)
 		}
 		
 		travelTaskRef = setTimeout(() => {
+			// show loader message
+			let panel = document.querySelector('#distance');
+			panel.style.visibility = 'visible';
+			panel.querySelector('#total-distance').innerHTML = '(processing...)';
+
+			// start processing
 			let result = new TravellingSalesman(canvasInstance.getPoints()).start();
 			console.log(result);
 			canvasInstance.connectTheDots(result.orderedPoints);
@@ -55,7 +61,6 @@ function Main(canvasSelector)
 	function showResult(totalDistance)
 	{
 		let panel = document.querySelector('#distance');
-		panel.style.color = 'black';
 		panel.querySelector('#total-distance').innerHTML = totalDistance.toFixed(2);
 	}
 
