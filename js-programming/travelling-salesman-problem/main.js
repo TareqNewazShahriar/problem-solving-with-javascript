@@ -57,7 +57,7 @@ function Main(canvasSelector)
 				console.log(result);
 				canvasInstance.connectTheDots(result.orderedPoints);
 				showResult(result.totalDistance);
-			}, 500);
+			}, 1000);
 		}, 2500);
 	}
 
